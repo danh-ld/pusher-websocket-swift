@@ -264,11 +264,14 @@ import NWWebSocket
         Disconnects the websocket
     */
     open func disconnect() {
+        print("WEBSOCKET-DISCONNECTING")
         if self.connectionState == .connected {
+            print("WEBSOCKET-DISCONNECTING-2")
             intentionalDisconnect = true
             updateConnectionState(to: .disconnecting)
             self.socket.disconnect()
         }
+        print("WEBSOCKET-DISCONNECTED")
     }
 
     /**
@@ -276,6 +279,7 @@ import NWWebSocket
     */
     open func connect() {
         // reset the intentional disconnect state
+        print("WEBSOCKET-CONNECTED")
         intentionalDisconnect = false
 
         if self.connectionState == .connected {
